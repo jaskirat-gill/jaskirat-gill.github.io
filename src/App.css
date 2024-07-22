@@ -1,0 +1,26 @@
+:root {
+  --primary-gold: #ad974f;
+  --secondary-gold: #8e793e;
+  --background-color: #2b2d31;
+  --dark-background-color: #232428;
+  --text-color: #EAEAEA;
+}
+
+.App {
+  text-align: center;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  height: fit-content;
+  padding-bottom: 5vh;
+  overflow-x: hidden;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.MainSectionHeader {
+  text-align: left;
+  font-size: 2.5vw;
+  color: var(--primary-gold);
+}

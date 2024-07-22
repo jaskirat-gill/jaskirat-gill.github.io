@@ -1,0 +1,40 @@
+.ProjectGallery {
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ProjectCardContainer {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 27vw 27vw 27vw;
+  grid-template-rows: fit-content;
+  grid-column-gap: 2vw;
+  grid-row-gap: 3vh;
+  margin-left: 3vw;
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .ProjectCardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    max-width: 600px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ProjectGallery {
+    margin-right: auto;
+    margin-left: auto;
+    width: 95vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .MainSectionHeader {
+    text-align: center;
+  }
+}

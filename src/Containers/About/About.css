@@ -1,0 +1,11 @@
+.title {
+  background-image: url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXRscWRzOXlmNjA2OTFxajczNWU5c2Z1cGkzZXo5bGk2YXRhMWtncCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SExu1NjbmGALSv5Bm2/giphy.gif);
+  background-size: cover;
+  color: transparent;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-transform: uppercase;
+  font-size: 120px;
+  margin: 10px 0;
+}
