@@ -12,7 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Email from "@mui/icons-material/Email";
-import { smoothScroll } from "../../util";
+import { smoothScroll } from "../util";
 const pages = ["Home", "Projects", "Contact"];
 
 

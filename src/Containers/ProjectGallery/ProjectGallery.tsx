@@ -1,32 +1,52 @@
 import React, { useState } from "react";
-//import ProjectCard from "./ProjectCard/ProjectCard";
-
-import "./ProjectGallery.css";
+import ProjectCard from "./ProjectCard";
 import "../../App.css";
-import { IProjectData, ProjectData } from "./ProjectGalleryHelper";
-import ProjectShowcase from "./ProjectShowcase/ProjectShowcase";
+import { Box, Button, Card, Typography, useMediaQuery } from "@mui/material";
+import { ProjectData, Projects } from "./ProjectGalleryHelper";
+import ProjectCarousel from "./ProjectCarousel";
 
 const ProjectGallery = ({}) => {
-  const [selectedProject, setSelectedProject] = useState<IProjectData>(
-    ProjectData[0]
+  const isMobile = useMediaQuery("(max-width:600px)");
+  const [selectedProject, setSelectedProject] = useState<ProjectData>(
+    Projects[0]
   );
 
   return (
-    <div id="ProjectGallery" className="ProjectGallery">
-      <h2 className="MainSectionHeader"> Projects Coming Soon</h2>
-      {/* <div className="ProjectCardContainer">
-        {ProjectData.map((data) => {
+    <Box
+      id="projects"
+      sx={{
+        width: "90vw",
+        marginTop: "3vh",
+      }}
+    >
+      <Typography variant="h2" color="primary" align="center">
+        Projects
+      </Typography>
+      <Box
+        sx={{
+          display: "grid",
+          width: "100%",
+          gridTemplateColumns: isMobile ? "1fr" : "27vw 27vw 27vw",
+          gridTemplateRows: "fit-content",
+          gridColumnGap: "2vw",
+          gridRowGap: "3vh",
+          marginLeft: "3vw",
+          marginRight: "3vw",
+          marginTop: " 50px",
+        }}
+      >
+        {Projects.map((project: ProjectData) => {
           return (
             <ProjectCard
-              data={data}
-              selected={selectedProject.id == data.id}
+              project={project}
+              selected={selectedProject.id == project.id}
               setSelectedProject={setSelectedProject}
             />
           );
         })}
-      </div>
-      {selectedProject && <ProjectShowcase data={selectedProject} />} */}
-    </div>
+      </Box>
+      {selectedProject && <ProjectCarousel project={selectedProject} />}
+    </Box>
   );
 };
 

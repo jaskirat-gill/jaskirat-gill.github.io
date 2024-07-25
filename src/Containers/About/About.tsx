@@ -12,7 +12,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@emotion/react";
-import "./About.css";
 const About = ({}) => {
   const isMobile = useMediaQuery("(max-width:900px)");
   const [checked, setChecked] = React.useState(false);

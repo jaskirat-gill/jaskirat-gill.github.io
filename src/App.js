@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@emotion/react";
 import "./App.css";
-import ContactCard from "./Components/ContactCard/ContactCard.tsx";
-import TopBar from "./Components/StylizedAppBar/StylizedAppBar.tsx";
+import ContactCard from "./Containers/ContactCard/ContactCard";
+import TopBar from "./Components/StylizedAppBar.tsx";
 import About from "./Containers/About/About.tsx";
 import ProjectGallery from "./Containers/ProjectGallery/ProjectGallery.tsx";
 import { createTheme } from "@mui/material";
