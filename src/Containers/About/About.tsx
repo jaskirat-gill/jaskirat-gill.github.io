@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import {
   Avatar,
   Box,
+  Button,
   Card,
   Chip,
   Collapse,
@@ -11,6 +12,9 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import Email from "@mui/icons-material/Email";
 import { useTheme } from "@emotion/react";
 const About = ({}) => {
   const isMobile = useMediaQuery("(max-width:900px)");
@@ -72,7 +76,7 @@ const About = ({}) => {
             Computer Science Major At UBC aspiring to be a Software Developer.
             Interested in Full Stack Development, Machine Learning, and more!
             Feel free to check out my resume and connect with me on LinkedIn or
-            any of the links below!
+            any of the links {isMobile ? "below" : "above"}!
           </Typography>
           <Chip
             variant="filled"
@@ -84,6 +88,26 @@ const About = ({}) => {
             clickable
             sx={{ width: isMobile ? "auto" : "20vw", color: "white" }}
           />
+          {isMobile && (
+            <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Button href="https://github.com/jaskirat-gill" target="_blank">
+              <GitHubIcon fontSize="large"/>
+            </Button>
+            <Button href="https://www.linkedin.com/in/jaskirat-s-gill/" target="_blank">
+              <LinkedInIcon fontSize="large"/>
+            </Button>
+            <Button href="mailto:gilljaskirat04@gmail.com">
+              <Email fontSize="large"/>
+            </Button>
+          </Box>
+          )}
         </Grid>
         <Grid
           item

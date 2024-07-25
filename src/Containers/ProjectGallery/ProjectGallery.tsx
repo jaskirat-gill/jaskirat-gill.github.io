@@ -17,6 +17,8 @@ const ProjectGallery = ({}) => {
       sx={{
         width: "90vw",
         marginTop: "3vh",
+        marginLeft: "auto",
+        marginRight: "auto",
       }}
     >
       <Typography variant="h2" color="primary" align="center">
