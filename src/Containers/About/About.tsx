@@ -65,7 +65,7 @@ const About = ({}) => {
               {isMobile && (
                 <Avatar
                   alt="Picture"
-                  src="https://i.imgur.com/p1z1EMJ.jpg"
+                  src="https://i.imgur.com/SRAp1bt.jpeg"
                   sx={{ width: "15vw", height: "15vw", aspectRatio: "auto" }}
                 />
               )}
@@ -122,7 +122,7 @@ const About = ({}) => {
           {!isMobile && (
             <Avatar
               alt="Picture"
-              src="https://i.imgur.com/p1z1EMJ.jpg"
+              src="https://i.imgur.com/SRAp1bt.jpeg"
               sx={{ width: "15vw", height: "15vw", aspectRatio: "auto" }}
             />
           )}
