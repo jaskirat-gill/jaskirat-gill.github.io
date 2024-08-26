@@ -12,9 +12,7 @@ import {
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Email from "@mui/icons-material/Email";
-import CanvasDots from "./HeroCanvas";
-import "./Canvas.css"
-import { useEffect } from "react";
+import CanvasDots from "../Hero/HeroCanvas";
 
 const About = () => {
   const isMobile = useMediaQuery("(max-width:900px)");

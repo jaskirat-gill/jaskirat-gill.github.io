@@ -1,25 +1,51 @@
-import React, { useEffect, useRef } from 'react';
-import './Canvas.css';
-const CanvasDots = () => {
-  const canvasRef = useRef(null);
+// Inspired by https://github.com/bscottnz/portfolio-site/
+
+import { useEffect, useRef } from "react";
+
+type Dot = {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  radius: number;
+  colour: string;
+  create: () => void;
+  animate: () => void;
+  line: () => void;
+};
+
+type DotsType = {
+  nb: number;
+  distance: number;
+  d_radius: number;
+  array: Dot[];
+};
+
+function CanvasDots() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    if (!canvas) {
+      return;
+    }
+    const ctx = canvas.getContext("2d");
     const colorDot = [
-      'rgb(81, 162, 233)',
-      'rgb(81, 162, 233)',
-      'rgb(81, 162, 233)',
-      'rgb(81, 162, 233)',
-      'rgb(255, 77, 90)',
+      "rgb(81, 162, 233)",
+      "rgb(81, 162, 233)",
+      "rgb(81, 162, 233)",
+      "rgb(81, 162, 233)",
+      "rgb(255, 77, 90)",
     ];
-    const color = 'rgb(81, 162, 233)';
+    const color = "rgb(81, 162, 233)";
 
     canvas.width = document.body.scrollWidth;
     canvas.height = window.innerHeight;
-    canvas.style.display = 'block';
-    ctx.lineWidth = 0.3;
-    ctx.strokeStyle = color;
+    canvas.style.display = "block";
+    if (ctx) {
+      ctx.lineWidth = 0.3;
+      ctx.strokeStyle = color;
+    }
 
     let mousePosition = {
       x: (30 * canvas.width) / 100,
@@ -27,7 +53,7 @@ const CanvasDots = () => {
     };
 
     const windowSize = window.innerWidth;
-    let dots;
+    let dots: DotsType;
 
     if (windowSize > 1600) {
       dots = { nb: 600, distance: 70, d_radius: 300, array: [] };
@@ -39,13 +65,32 @@ const CanvasDots = () => {
       dots = { nb: 300, distance: 0, d_radius: 0, array: [] };
     } else if (windowSize > 600) {
       dots = { nb: 200, distance: 0, d_radius: 0, array: [] };
+    } else if (windowSize > 650) {
+      dots = {
+        nb: 400,
+        distance: 50,
+        d_radius: 185,
+        array: [],
+      };
+    } else if (windowSize > 500) {
+      dots = {
+        nb: 325,
+        distance: 45,
+        d_radius: 170,
+        array: [],
+      };
     } else {
-      dots = { nb: 100, distance: 0, d_radius: 0, array: [] };
+      dots = {
+        nb: 270,
+        distance: 45,
+        d_radius: 140,
+        array: [],
+      };
     }
 
-    function Dot() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
+    function Dot(this: Dot) {
+      this.x = Math.random() * (canvas ? canvas.width : 0);
+      this.y = Math.random() * (canvas ? canvas.height : 0);
       this.vx = -0.5 + Math.random();
       this.vy = -0.5 + Math.random();
       this.radius = Math.random() * 1.5;
@@ -54,6 +99,7 @@ const CanvasDots = () => {
 
     Dot.prototype = {
       create: function () {
+        if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         const dotDistance = Math.sqrt(
@@ -78,6 +124,7 @@ const CanvasDots = () => {
         }
       },
       line: function () {
+        if (!ctx) return;
         for (let i = 0; i < dots.nb; i++) {
           for (let j = 0; j < dots.nb; j++) {
             const i_dot = dots.array[i];
@@ -117,14 +164,16 @@ const CanvasDots = () => {
     };
 
     function createDots() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (ctx && canvas) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
       for (let i = 0; i < dots.nb; i++) {
-        dots.array.push(new Dot());
+        dots.array.push(new (Dot as any)() as Dot);
         const dot = dots.array[i];
         dot.create();
       }
       dots.array[0].radius = 1.5;
-      dots.array[0].colour = '#51a2e9';
+      dots.array[0].colour = "#51a2e9";
       dots.array[0].line();
       dots.array[0].animate();
     }
@@ -157,10 +206,25 @@ const CanvasDots = () => {
   }, []);
 
   return (
-    <div className="canvas">
-      <canvas ref={canvasRef} className="connecting-dots"></canvas>
+    <div
+      style={{
+        position: "absolute",
+        top: "0",
+        right: "0",
+        left: "0",
+        bottom: "0",
+        width: "100%",
+        height: "100vh",
+        backgroundColor: "rgb(26, 26, 26)",
+        overflow: "hidden",
+      }}
+    >
+      <canvas
+        ref={canvasRef}
+        style={{ height: "100%", width: "100%" }}
+      ></canvas>
     </div>
   );
-};
+}
 
 export default CanvasDots;
