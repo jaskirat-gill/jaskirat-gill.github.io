@@ -7,6 +7,7 @@ import {
   CardContent,
   CardMedia,
   Chip,
+  Grow,
   MobileStepper,
   Typography,
   useMediaQuery,

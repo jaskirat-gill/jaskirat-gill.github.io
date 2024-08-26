@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import ProjectCard from "./ProjectCard";
 import "../../App.css";
-import { Box, Button, Card, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Grow,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { ProjectData, Projects } from "./ProjectGalleryHelper";
 import ProjectCarousel from "./ProjectCarousel";
 
@@ -28,12 +35,11 @@ const ProjectGallery = ({}) => {
         sx={{
           display: "grid",
           width: "100%",
-          gridTemplateColumns: isMobile ? "1fr" : "27vw 27vw 27vw",
+          justifyContent: "center",
+          gridTemplateColumns: isMobile ? "1fr" : "35vw 35vw",
           gridTemplateRows: "fit-content",
           gridColumnGap: "2vw",
           gridRowGap: "3vh",
-          marginLeft: "3vw",
-          marginRight: "3vw",
           marginTop: " 50px",
         }}
       >
@@ -41,7 +47,7 @@ const ProjectGallery = ({}) => {
           return (
             <ProjectCard
               project={project}
-              selected={selectedProject.id == project.id}
+              selected={selectedProject.id === project.id}
               setSelectedProject={setSelectedProject}
             />
           );

@@ -1,31 +1,33 @@
-import React, { useEffect } from "react";
 import {
   Avatar,
   Box,
   Button,
   Card,
   Chip,
-  Collapse,
   Grid,
-  Paper,
-  Slide,
+  Grow,
   Typography,
   useMediaQuery,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Email from "@mui/icons-material/Email";
-import { useTheme } from "@emotion/react";
-const About = ({}) => {
-  const isMobile = useMediaQuery("(max-width:900px)");
-  const [checked, setChecked] = React.useState(false);
+import CanvasDots from "./HeroCanvas";
+import "./Canvas.css"
+import { useEffect } from "react";
 
-  useEffect(() => {
-    setChecked(true);
-  }, []);
+const About = () => {
+  const isMobile = useMediaQuery("(max-width:900px)");
+
+
+
   return (
+    <>
+  <CanvasDots />    
+    <Grow in timeout={1000}>
     <Card
       id="home"
+      elevation={15}
       sx={{
         width: "85%",
         marginLeft: "auto",
@@ -74,7 +76,7 @@ const About = ({}) => {
 
           <Typography sx={{ marginTop: "3%", marginBottom: "2%" }}>
             Computer Science Major At UBC aspiring to be a Software Developer.
-            Interested in Full Stack Development, Machine Learning, and more!
+            Interested in full stack development, machine learning, and more!
             Feel free to check out my resume and connect with me on LinkedIn or
             any of the links {isMobile ? "below" : "above"}!
           </Typography>
@@ -129,6 +131,9 @@ const About = ({}) => {
         </Grid>
       </Grid>
     </Card>
+    </Grow>
+    </>
+    
   );
 };
 

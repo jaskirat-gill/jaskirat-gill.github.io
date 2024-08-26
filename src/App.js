@@ -16,27 +16,27 @@ function App() {
       secondary: {
         main: "#2b2d31",
         dark: "#232428",
-      }
+      },
     },
   });
 
   theme.typography.h2 = {
-    fontSize: '1.2rem',
-    '@media (min-width:600px)': {
-      fontSize: '1.5rem',
+    fontSize: "1.2rem",
+    "@media (min-width:600px)": {
+      fontSize: "1.5rem",
     },
-    [theme.breakpoints.up('md')]: {
-      fontSize: '2.4rem',
+    [theme.breakpoints.up("md")]: {
+      fontSize: "2.4rem",
     },
   };
 
   theme.typography.h3 = {
-    fontSize: '1.2rem',
-    '@media (min-width:600px)': {
-      fontSize: '1.5rem',
+    fontSize: "1.2rem",
+    "@media (min-width:600px)": {
+      fontSize: "1.5rem",
     },
-    [theme.breakpoints.up('md')]: {
-      fontSize: '2.4rem',
+    [theme.breakpoints.up("md")]: {
+      fontSize: "2.4rem",
     },
   };
   return (

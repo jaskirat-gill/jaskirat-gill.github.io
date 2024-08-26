@@ -52,7 +52,7 @@ export const Projects: ProjectData[] = [
     previewText: 
       "Chrome extension developed with small team to combat Workday's poor UI/UX. 5000+ active users",
     content:
-      "Chrome extension & Website developed with small team to combat Workday's poor UI/UX. Extremely well recieved by student body with an active Discord Community and over 5000 users. Open source project maintained by a small group of developers. Extension built on React, TypeScript & CSS. Website built on React, TypeScript, and using Material UI components. Backend built on Node.js, Express, and DynamoDB, hosted on Digital Ocean. CI/CD pipeline set up with GitHub Actions. The extension allows students to view their course schedule in a more user-friendly format. Website incorporates directions to classes, review and social systems and more!",
+      "Chrome extension & Website developed with small team to combat Workday's poor UI/UX. Extremely well recieved by student body with an active Discord Community and over 5000 users. Open source project maintained by a small group of developers. Extension built on React, TypeScript & CSS. CI/CD pipeline set up with GitHub Actions. The extension allows students to view their course schedule in a more user-friendly format.",
     previewImage: {
       url: "https://i.imgur.com/LYXJpbO.png",
       alt: "Picture of the Workday Chrome Extension",
@@ -60,6 +60,39 @@ export const Projects: ProjectData[] = [
   },
   {
     id: 2,
+    mediaList: [
+      {
+        url: "https://i.imgur.com/JDyfSYY.png",
+        alt: "Picture of directions Page",
+      },
+      {
+        url: "https://i.imgur.com/caEcvLn.png",
+        alt: "Picture of the research page",
+      },
+      {
+        url: "https://i.imgur.com/DexeLZ6.png",
+        alt: "Picture of the learn more page",
+      },
+    ],
+    links: [
+      {
+        displayText: "Student Hub Website",
+        url: "https://ubcstudenthub.ca",
+      }
+    ],
+    title: "UBC Student Hub",
+    skills: ["React", "TypeScript", "DynamoDB", "Node.js"],
+    previewText:
+      "One stop website for UBC students to socialize, research courses, navigate campus and more. Built as a followup to the UBC Workday Chrome Extension",
+    content:
+      "UBC Student Hub is a website built using React.js and TypeScript for the frontend and Node.js for the backend communicating with a DynamoDB database. Both are hosted on Digital Ocean. Worked on it with a team of developers, I built the landing, directions and research pages. The directions page plots a students schedule on a map and provides directions between classes using the Google Maps API. The research page allows students to view historical course data, reviews, social media posts, prerequisites and more about a course. The research page is designed to be a user customizable dashboard with a drag and drop interface allowing users to add and remove widgets.",
+    previewImage: {
+      url: "https://i.imgur.com/PmovuSy.png",
+      alt: "Picture of UBC Student Hub Landing Page",
+    },
+  },
+  {
+    id: 3,
     mediaList: [
       {
         url: "https://i.imgur.com/Gdv7Aa3.png",
@@ -96,7 +129,7 @@ export const Projects: ProjectData[] = [
     },
   },
   {
-    id: 3,
+    id: 4,
     mediaList: [
       {
         url: "",
@@ -120,7 +153,7 @@ export const Projects: ProjectData[] = [
     title: "Poppy Streets Freelance Project",   
     skills: ["Python", "MySQL", "JavaScript"],
     previewText: 
-      "Web App designed to honor tje stories of Canadian Veterans",
+      "Web App designed to honor the stories of Canadian Veterans",
     content:
       "Freelance project on the request of a member of the military. Richmond BC has a program where some street signs are named after veterans commemorating their service with a poppy on the sign. The website was built to share the stories of these veterans by showing these signs on a map and displaying biographies of who that sign is for. The website was built using Python, MySQL, and JavaScript. Unfortunately, no pictures are available",
     previewImage: {
