@@ -1,6 +1,7 @@
 // Inspired by https://github.com/bscottnz/portfolio-site/
 
 import { useEffect, useRef } from "react";
+import './Hero.css'
 
 type Dot = {
   x: number;
@@ -21,7 +22,7 @@ type DotsType = {
   array: Dot[];
 };
 
-function CanvasDots() {
+function HeroCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -31,14 +32,13 @@ function CanvasDots() {
     }
     const ctx = canvas.getContext("2d");
     const colorDot = [
-      "rgb(81, 162, 233)",
-      "rgb(81, 162, 233)",
-      "rgb(81, 162, 233)",
-      "rgb(81, 162, 233)",
-      "rgb(255, 77, 90)",
+      "rgb(173, 151, 79)",
+      "rgb(173, 151, 79)",
+      "rgb(173, 151, 79)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
     ];
-    const color = "rgb(81, 162, 233)";
-
+    const color = "rgb(173, 151, 79)";
     canvas.width = document.body.scrollWidth;
     canvas.height = window.innerHeight;
     canvas.style.display = "block";
@@ -153,7 +153,7 @@ function CanvasDots() {
                 if (distanceRatio < 0) {
                   distanceRatio = 0;
                 }
-                ctx.strokeStyle = `rgb(81, 162, 233, ${1 - distanceRatio})`;
+                ctx.strokeStyle = `rgb(173, 151, 79, ${1 - distanceRatio})`;
                 ctx.stroke();
                 ctx.closePath();
               }
@@ -206,25 +206,10 @@ function CanvasDots() {
   }, []);
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        top: "0",
-        right: "0",
-        left: "0",
-        bottom: "0",
-        width: "100%",
-        height: "100vh",
-        backgroundColor: "rgb(26, 26, 26)",
-        overflow: "hidden",
-      }}
-    >
-      <canvas
-        ref={canvasRef}
-        style={{ height: "100%", width: "100%" }}
-      ></canvas>
+    <div className="canvas">
+      <canvas ref={canvasRef} className="full-screen"></canvas>
     </div>
   );
 }
 
-export default CanvasDots;
+export default HeroCanvas;

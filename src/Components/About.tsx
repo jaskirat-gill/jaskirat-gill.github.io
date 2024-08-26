@@ -1,4 +1,5 @@
 import {
+  alpha,
   Avatar,
   Box,
   Button,
@@ -12,7 +13,6 @@ import {
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Email from "@mui/icons-material/Email";
-import CanvasDots from "../Hero/HeroCanvas";
 
 const About = () => {
   const isMobile = useMediaQuery("(max-width:900px)");
@@ -21,20 +21,20 @@ const About = () => {
 
   return (
     <>
-  <CanvasDots />    
     <Grow in timeout={1000}>
     <Card
       id="home"
       elevation={15}
       sx={{
-        width: "85%",
-        marginLeft: "auto",
-        marginRight: "auto",
-        backgroundColor: "secondary.main",
-        display: "flex",
+        width: "65%",
+        height: "40%",
+        margin: "auto",
+        backgroundColor: (theme) => alpha(theme.palette.secondary.main, 0.5),        display: "flex",
+        alignContent: "center",
+        justifyContent: "center",
         flexDirection: "row",
         padding: "5px 20px",
-        marginTop: "100px",
+        zIndex: 999,
       }} 
     >
       <Grid container>
@@ -76,7 +76,7 @@ const About = () => {
             Computer Science Major At UBC aspiring to be a Software Developer.
             Interested in full stack development, machine learning, and more!
             Feel free to check out my resume and connect with me on LinkedIn or
-            any of the links {isMobile ? "below" : "above"}!
+            any of the links {isMobile ? "below" : "below"}!
           </Typography>
           <Chip
             variant="filled"
@@ -88,13 +88,13 @@ const About = () => {
             clickable
             sx={{ width: isMobile ? "auto" : "20vw", color: "white" }}
           />
-          {isMobile && (
+          
             <Box
             sx={{
               flexGrow: 1,
               display: "flex",
               alignContent: "center",
-              justifyContent: "center",
+              justifyContent: "flex-start",
             }}
           >
             <Button href="https://github.com/jaskirat-gill" target="_blank">
@@ -107,7 +107,6 @@ const About = () => {
               <Email fontSize="large"/>
             </Button>
           </Box>
-          )}
         </Grid>
         <Grid
           item
@@ -130,6 +129,7 @@ const About = () => {
       </Grid>
     </Card>
     </Grow>
+
     </>
     
   );
