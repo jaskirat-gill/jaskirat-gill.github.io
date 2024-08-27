@@ -1,6 +1,7 @@
-import { ProjectData } from "./ProjectGalleryHelper";
+import { ProjectData } from "./ProjectsHelper";
 import { smoothScroll } from "../../util";
 import {
+  Box,
   Card,
   CardContent,
   CardMedia,
@@ -11,63 +12,109 @@ import {
 
 interface IProjectCardProps {
   project: ProjectData;
-  selected: boolean;
-  setSelectedProject: (arg0: ProjectData) => void;
+  setSelectedProjects: (project: ProjectData) => void;
 }
 
-const ProjectCard = ({
-  project,
-  selected,
-  setSelectedProject,
-}: IProjectCardProps) => {
+const ProjectCard = ({ project, setSelectedProjects }: IProjectCardProps) => {
   return (
     <Grow in timeout={1000}>
       <Card
         sx={{
           width: "100%",
           height: "100%",
-          borderRadius: "10px",
-          backgroundColor: "var(--dark-background-color)",
+          borderRadius: "15px",
+          backgroundColor: "rgba(var(--dark-background-color-rgb), 0.8)",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
           overflow: "hidden",
           textAlign: "left",
-          paddingBottom: "5px",
-          outline: selected ? "solid 5px var(--secondary-gold)" : "none",
+          padding: "15px",
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
+          "&:hover": {
+            transform: "scale(1.03)",
+            boxShadow: "0 6px 25px rgba(0, 0, 0, 0.15)",
+            cursor: "pointer",
+            outline: "solid 5px var(--secondary-gold)",
+          },
+          "&:active": {
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
+            transform: "scale(1.02)",
+          },
         }}
         onClick={() => {
-          setSelectedProject(project);
-          smoothScroll("ProjectCarousel");
+          setSelectedProjects(project);
+          smoothScroll("projects-gallery");
         }}
       >
         <CardMedia
           component="img"
-          height="194"
+          height="200"
           sx={{
-            width: "100%",
-            height: "50%",
-            maxHeight: "200px",
-            overflow: "hidden",
+            borderRadius: "10px",
+            marginBottom: "8px",
+            objectFit: "cover",
+            transition: "transform 0.3s ease",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
           }}
           image={project.previewImage.url}
+          alt={project.title}
         />
-        <CardContent sx={{ height: "50%" }}>
-          <Typography variant="h4" color={"primary"}>
+        <CardContent
+          sx={{
+            padding: "0 10px 20px 10px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            variant="h5"
+            color="primary"
+            sx={{
+              fontWeight: "bold",
+              marginBottom: "10px",
+              alignSelf: "flex-start",
+            }}
+          >
             {project.title}
           </Typography>
-          <Typography variant="body1">{project.previewText}</Typography>
-          {project.skills.map((skill) => {
-            return (
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{
+              marginBottom: "15px",
+              fontSize: "1rem",
+              lineHeight: 1.5,
+            }}
+          >
+            {project.previewText}
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "10px",
+              marginBottom: '10%'
+            }}
+          >
+            {project.skills.map((skill) => (
               <Chip
+                key={skill}
                 label={skill}
                 color="primary"
                 variant="outlined"
-                style={{
-                  marginRight: "5px",
-                  marginTop: "5px",
-                  marginBottom: "10px",
+                sx={{
+                  padding: "5px 10px 5px 10px",
+                  fontSize: "0.9rem",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "primary.light",
+                  },
                 }}
               />
-            );
-          })}
+            ))}
+          </Box>
         </CardContent>
       </Card>
     </Grow>

@@ -1,10 +1,8 @@
-// Inspired by https://github.com/bscottnz/portfolio-site/
-
 import { useEffect, useRef } from "react";
-import "./Hero.css";
+import './Canvas.css';
 
 const GOLD = "rgb(173, 151, 79)";
-const WHITE = "rgb(255, 255, 255)";
+const WHITE = "rgb(255, 255, 255)"
 
 type Dot = {
   x: number;
@@ -15,7 +13,6 @@ type Dot = {
   colour: string;
   create: () => void;
   animate: () => void;
-  line: () => void;
 };
 
 type DotsType = {
@@ -25,7 +22,7 @@ type DotsType = {
   array: Dot[];
 };
 
-function HeroCanvas() {
+function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -34,10 +31,16 @@ function HeroCanvas() {
       return;
     }
     const ctx = canvas.getContext("2d");
-    const colorDot = [GOLD, GOLD, GOLD, GOLD, WHITE];
+    const colorDot = [
+      GOLD,
+      GOLD,
+      GOLD,
+      WHITE,
+    ];
+
     canvas.width = document.body.scrollWidth;
     canvas.height = window.innerHeight;
-    canvas.style.display = "block";
+    canvas.style.display = 'block';
     if (ctx) {
       ctx.lineWidth = 0.3;
       ctx.strokeStyle = GOLD;
@@ -52,17 +55,20 @@ function HeroCanvas() {
     let dots: DotsType;
 
     if (windowSize > 1600) {
-      dots = { nb: 600, distance: 70, d_radius: 300, array: [] };
+      dots = { nb: 600, distance: 0, d_radius: 0, array: [] };
     } else if (windowSize > 1300) {
-      dots = { nb: 575, distance: 60, d_radius: 280, array: [] };
+      dots = { nb: 575, distance: 0, d_radius: 0, array: [] };
     } else if (windowSize > 1100) {
-      dots = { nb: 500, distance: 55, d_radius: 250, array: [] };
-    } else if (windowSize > 800) {
       dots = { nb: 300, distance: 0, d_radius: 0, array: [] };
-    } else if (windowSize > 600) {
+    } else if (windowSize > 800) {
       dots = { nb: 200, distance: 0, d_radius: 0, array: [] };
+      if (ctx) ctx.globalAlpha = 0;
+    } else if (windowSize > 600) {
+      dots = { nb: 150, distance: 0, d_radius: 0, array: [] };
+      if (ctx) ctx.globalAlpha = 0;
     } else {
       dots = { nb: 100, distance: 0, d_radius: 0, array: [] };
+      if (ctx) ctx.globalAlpha = 0;
     }
 
     function Dot(this: Dot) {
@@ -79,63 +85,26 @@ function HeroCanvas() {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        const dotDistance = Math.sqrt(
-          (this.x - mousePosition.x) ** 2 + (this.y - mousePosition.y) ** 2
-        );
-        const distanceRatio = dotDistance / (windowSize / 1.7);
+
+        const top = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
+        const dotDistance = Math.sqrt((this.x - mousePosition.x) ** 2 + (this.y - mousePosition.y + top) ** 2);
+        const distanceRatio = dotDistance / (windowSize / 2);
+
         ctx.fillStyle = this.colour.slice(0, -1) + `,${1 - distanceRatio})`;
         ctx.fill();
       },
       animate: function () {
         for (let i = 1; i < dots.nb; i++) {
           const dot = dots.array[i];
-          if (dot.y < 0 || dot.y > canvas.height) {
+          if (dot.y < 0 || dot.y > (canvas ? canvas.height : 0)) {
             dot.vx = dot.vx;
             dot.vy = -dot.vy;
-          } else if (dot.x < 0 || dot.x > canvas.width) {
+          } else if (dot.x < 0 || dot.x > (canvas ? canvas.width : 0)) {
             dot.vx = -dot.vx;
             dot.vy = dot.vy;
           }
           dot.x += dot.vx;
           dot.y += dot.vy;
-        }
-      },
-      line: function () {
-        if (!ctx) return;
-        for (let i = 0; i < dots.nb; i++) {
-          for (let j = 0; j < dots.nb; j++) {
-            const i_dot = dots.array[i];
-            const j_dot = dots.array[j];
-            if (
-              i_dot.x - j_dot.x < dots.distance &&
-              i_dot.y - j_dot.y < dots.distance &&
-              i_dot.x - j_dot.x > -dots.distance &&
-              i_dot.y - j_dot.y > -dots.distance
-            ) {
-              if (
-                i_dot.x - mousePosition.x < dots.d_radius &&
-                i_dot.y - mousePosition.y < dots.d_radius &&
-                i_dot.x - mousePosition.x > -dots.d_radius &&
-                i_dot.y - mousePosition.y > -dots.d_radius
-              ) {
-                ctx.beginPath();
-                ctx.moveTo(i_dot.x, i_dot.y);
-                ctx.lineTo(j_dot.x, j_dot.y);
-                const dotDistance = Math.sqrt(
-                  (i_dot.x - mousePosition.x) ** 2 +
-                    (i_dot.y - mousePosition.y) ** 2
-                );
-                let distanceRatio = dotDistance / dots.d_radius;
-                distanceRatio -= 0.3;
-                if (distanceRatio < 0) {
-                  distanceRatio = 0;
-                }
-                ctx.strokeStyle = `rgb(173, 151, 79, ${1 - distanceRatio})`;
-                ctx.stroke();
-                ctx.closePath();
-              }
-            }
-          }
         }
       },
     };
@@ -149,44 +118,42 @@ function HeroCanvas() {
         const dot = dots.array[i];
         dot.create();
       }
+
       dots.array[0].radius = 1.5;
       dots.array[0].colour = GOLD;
-      dots.array[0].line();
       dots.array[0].animate();
     }
 
     const draw = setInterval(createDots, 1000 / 30);
 
-    window.onmousemove = function (e) {
-      mousePosition.x = e.pageX;
-      mousePosition.y = e.pageY;
-      try {
-        dots.array[0].x = e.pageX;
-        dots.array[0].y = e.pageY;
-      } catch {
-        // handle error
-      }
+    window.onscroll = function () {
+      mousePosition.x = window.innerWidth / 2;
+      mousePosition.y = window.innerHeight / 2;
+      const top = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
+      mousePosition.y += top;
     };
 
     window.onresize = function () {
       clearInterval(draw);
-      canvas.width = document.body.scrollWidth;
-      canvas.height = window.innerHeight;
+      if (canvas) {
+        canvas.width = document.body.scrollWidth;
+        canvas.height = window.innerHeight;
+      }
       createDots();
     };
 
     return () => {
       clearInterval(draw);
-      window.onmousemove = null;
+      window.onscroll = null;
       window.onresize = null;
     };
   }, []);
 
   return (
     <div className="canvas">
-      <canvas ref={canvasRef} className="full-screen"></canvas>
+      <canvas ref={canvasRef}></canvas>
     </div>
   );
 }
 
-export default HeroCanvas;
+export default Canvas;

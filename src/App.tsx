@@ -1,11 +1,10 @@
 import { ThemeProvider } from "@emotion/react";
 import "./App.css";
-import ContactCard from "./Containers/ContactCard/ContactCard";
-import TopBar from "./Components/StylizedAppBar.tsx";
-import About from "./Components/About";
-import ProjectGallery from "./Containers/ProjectGallery/ProjectGallery.tsx";
 import { createTheme } from "@mui/material";
 import Hero from "./Containers/Hero/Hero";
+import Projects from "./Containers/ProjectGallery/Projects";
+import Contact from "./Containers/Contact/Contact";
+import TopBar from "./Components/TopBar";
 function App() {
   const theme = createTheme({
     palette: {
@@ -43,12 +42,11 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        {/* <TopBar />
-        <About id="home" />
-        <ProjectGallery />
-        <ContactCard /> */}
         <Hero />
-        <div>Made With TypeScript & React From Scratch</div>
+        <TopBar />
+        <Projects />
+        <Contact />
+        <div >Made With TypeScript & React From Scratch</div>
       </ThemeProvider>
     </div>
   );

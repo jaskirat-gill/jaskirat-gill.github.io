@@ -20,7 +20,7 @@ export interface ProjectData {
   previewText: string;
 }
 
-export const Projects: ProjectData[] = [
+export const ProjectsData: ProjectData[] = [
   {
     id: 1,
     mediaList: [

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ProjectData, Link } from "./ProjectGalleryHelper";
+import { useState } from "react";
+import { ProjectData, Link } from "./ProjectsHelper";
 import {
   Box,
   Button,
@@ -7,7 +7,6 @@ import {
   CardContent,
   CardMedia,
   Chip,
-  Grow,
   MobileStepper,
   Typography,
   useMediaQuery,
@@ -39,11 +38,20 @@ const ProjectCarousel = ({ project }: IProjectCarouselProps) => {
 
   return (
     <Card
-      id="ProjectCarousel"
       sx={{
-        maxWidth: isMobile ? "80%" : 645,
+        maxWidth: isMobile ? "90%" : "60%",
         margin: "auto",
-        marginTop: "50px",
+        marginTop: "5%",
+        borderRadius: "15px",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+        backgroundColor: "var(--dark-background-color)",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        "&:hover": {
+          transform: "scale(1.02)",
+          boxShadow: "0 6px 25px rgba(0, 0, 0, 0.15)",
+        },
+        zIndex: 999,
+        outline: "solid 5px var(--secondary-gold)",
       }}
     >
       <Box
@@ -51,7 +59,10 @@ const ProjectCarousel = ({ project }: IProjectCarouselProps) => {
           height: 440,
           flexGrow: 1,
           display: "block",
-          backgroundColor: "rgba(0,0,0,0.01)",
+          backgroundColor: "rgba(0, 0, 0, 0.0)",
+          borderTopLeftRadius: "15px",
+          borderTopRightRadius: "15px",
+          overflow: "hidden",
         }}
       >
         <AutoPlaySwipeableViews
@@ -68,10 +79,8 @@ const ProjectCarousel = ({ project }: IProjectCarouselProps) => {
                   sx={{
                     display: "block",
                     height: "380px",
-                    margin: "0 auto",
-                    paddingTop: "20px",
-                    objectFit: "contain",
-                    overflow: "hidden",
+                    width: "100%",
+                    objectFit: "cover",
                   }}
                   src={step.url}
                   title={step.alt}
@@ -89,7 +98,7 @@ const ProjectCarousel = ({ project }: IProjectCarouselProps) => {
               size="small"
               onClick={handleNext}
               disabled={activeStep === maxSteps - 1}
-              style={{ color: "#fff" }}
+              sx={{ color: "primary.main" }}
             >
               Next
               <KeyboardArrowRight />
@@ -100,25 +109,34 @@ const ProjectCarousel = ({ project }: IProjectCarouselProps) => {
               size="small"
               onClick={handleBack}
               disabled={activeStep === 0}
-              style={{ color: "#fff" }}
+              sx={{ color: "primary.main" }}
             >
               <KeyboardArrowLeft />
               Back
             </Button>
           }
-          sx={{ background: "rgba(0,0,0,0.0)", marginBottom: "10px" }}
+          sx={{
+            background: "var(--dark-background-color)",
+            borderBottomLeftRadius: "15px",
+            borderBottomRightRadius: "15px",
+            padding: "10px 0",
+          }}
         />
       </Box>
-      <CardContent sx={{ background: "secondary.main" }}>
+      <CardContent
+        sx={{
+          backgroundColor: "var(--dark-background-color)",
+          padding: "20px",
+        }}
+      >
         <Typography
           gutterBottom
           variant="h5"
           component="h1"
           color="primary"
-          style={{
+          sx={{
             fontWeight: "bold",
-            display: "grid",
-            justifyContent: "center",
+            textAlign: "center",
           }}
         >
           {project.title}
@@ -127,23 +145,42 @@ const ProjectCarousel = ({ project }: IProjectCarouselProps) => {
           variant="body2"
           color="#fff"
           component="p"
-          sx={{ fontSize: "1.1rem" }}
+          sx={{
+            fontSize: "1.1rem",
+            textAlign: "center",
+            marginBottom: "20px",
+          }}
         >
           {project.content}
         </Typography>
-        {project.links.map((link) => {
-          return (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          {project.links.map((link) => (
             <Chip
+              key={link.displayText}
               clickable
               color="primary"
               variant="outlined"
               component="a"
               href={link.url}
               label={link.displayText}
-              style={{ marginRight: "5px", marginTop: "5px" }}
+              sx={{
+                margin: "5px",
+                padding: "10px",
+                fontWeight: "bold",
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                "&:hover": {
+                  backgroundColor: "primary.light",
+                },
+              }}
             />
-          );
-        })}
+          ))}
+        </Box>
       </CardContent>
     </Card>
   );

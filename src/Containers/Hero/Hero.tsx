@@ -1,11 +1,12 @@
-import About from '../../Components/About';
-import './Hero.css'
+import HeroContent from './HeroContent';
 import HeroCanvas from './HeroCanvas';
+import '../../App.css'
+
 const Hero = () => {
     return (
-        <div className="hero">
+        <div className="container-root" id='home'>
             <HeroCanvas />
-            <About />
+            <HeroContent />
         </div>
     )
 

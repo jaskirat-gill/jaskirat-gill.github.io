@@ -30,7 +30,8 @@ function TopBar() {
   };
 
   return (
-    <AppBar position="static" color="secondary">
+
+    <AppBar position="sticky" color="secondary" sx={{opacity: '0.5', backdropFilter: 'blur(5px)'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
           <Typography
