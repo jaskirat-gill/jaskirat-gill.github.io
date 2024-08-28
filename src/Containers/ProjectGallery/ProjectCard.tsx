@@ -8,6 +8,7 @@ import {
   Chip,
   Grow,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 
 interface IProjectCardProps {
@@ -16,6 +17,7 @@ interface IProjectCardProps {
 }
 
 const ProjectCard = ({ project, setSelectedProjects }: IProjectCardProps) => {
+  const isMobile = useMediaQuery("(max-width:600px)");
   return (
     <Grow in timeout={1000}>
       <Card
@@ -29,6 +31,7 @@ const ProjectCard = ({ project, setSelectedProjects }: IProjectCardProps) => {
           textAlign: "left",
           padding: "15px",
           transition: "transform 0.3s ease, box-shadow 0.3s ease",
+          boxSizing: isMobile ? "border-box" : "", 
           "&:hover": {
             transform: "scale(1.03)",
             boxShadow: "0 6px 25px rgba(0, 0, 0, 0.15)",

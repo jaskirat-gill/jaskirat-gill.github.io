@@ -13,10 +13,12 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Email from "@mui/icons-material/Email";
 import { smoothScroll } from "../util";
-const pages = ["Home", "Projects", "Contact"];
+import { useMediaQuery } from "@mui/material";
+const pages = ["Home", "Projects", "Connect"];
 
 
 function TopBar() {
+  const isMobile = useMediaQuery("(max-width:600px)");
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -31,7 +33,7 @@ function TopBar() {
 
   return (
 
-    <AppBar position="sticky" color="secondary" sx={{opacity: '0.5', backdropFilter: 'blur(5px)'}}>
+    <AppBar position="sticky" color="secondary" sx={{opacity: isMobile ? '1' : '0.5', backdropFilter: 'blur(5px)'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
           <Typography

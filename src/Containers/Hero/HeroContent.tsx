@@ -28,7 +28,7 @@ const HeroContent = () => {
           elevation={15}
           sx={{
             width: "65%",
-            height: "40%",
+            height: isMobile? "65%":"40%",
             ml: "auto",
             mr: "auto",
             mt: "auto",
@@ -58,13 +58,14 @@ const HeroContent = () => {
             >
               <Grid container>
                 <Grid item xs={9} md={12}>
-                  <Typography color="primary.main" variant="h2">
+                  <Typography color="primary.main" variant="h2"sx={{fontSize: '1.5rem'}}>
                     Hi! I'm Jaskirat Gill
                   </Typography>
                   <Typography variant="h3" color="primary.main">
                     Software Developer
                   </Typography>
                 </Grid>
+                
 
                 <Grid item xs={3} md={0}>
                   {isMobile && (
@@ -144,7 +145,7 @@ const HeroContent = () => {
       <Button
         variant="outlined"
         sx={{
-          width: "25%",
+          width: isMobile ? "75%" : "25%",
           mb: "auto",
           mt: "auto",
           height: "3rem",

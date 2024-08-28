@@ -1,11 +1,12 @@
-import { Card, CardContent, Link, Typography } from "@mui/material";
+import { Card, CardContent, Link, Typography, useMediaQuery } from "@mui/material";
 
 const ContactCard = () => {
+  const isMobile = useMediaQuery("(max-width:600px)");
+
   return (
     <Card
       sx={{
-        width: "50vw",
-        minWidth: "600px",
+        width: isMobile ? "70vw" : "50vw",
         height: "40%",
         backgroundColor: "var(--dark-background-color)",
         marginLeft: "auto",
@@ -13,7 +14,8 @@ const ContactCard = () => {
         marginTop: " 100px",
         marginBottom: "30vh",
         padding: "1rem 2rem",
-        zIndex: 999
+        zIndex: 999,
+        outline: "solid 5px var(--secondary-gold)",
       }}
     >
       <Typography variant="h2" color="primary" align="center">

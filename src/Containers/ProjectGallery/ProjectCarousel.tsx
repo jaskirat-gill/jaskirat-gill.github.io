@@ -42,6 +42,7 @@ const ProjectCarousel = ({ project }: IProjectCarouselProps) => {
         maxWidth: isMobile ? "90%" : "60%",
         margin: "auto",
         marginTop: "5%",
+        marginBottom: isMobile ? "5%" : "",
         borderRadius: "15px",
         boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
         backgroundColor: "var(--dark-background-color)",

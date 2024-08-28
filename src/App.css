@@ -37,7 +37,17 @@
   position: relative;
   display: flex;
   width: 100%;
-  min-height: 100vh;
   z-index: 999;
+}
 
+@media (max-width: 600px) {
+  .container-root-projects {
+    min-height: 100vh;
+  }
+}
+
+@media (min-width: 600px) {
+  .container-root-projects {
+    height: 105vh;
+  }
 }
