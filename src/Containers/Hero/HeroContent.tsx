@@ -93,7 +93,7 @@ const HeroContent = () => {
                 label="View Resume"
                 color="primary"
                 component="a"
-                href="/Resume___Jaskirat_Gill___7_20_2024.pdf"
+                href="/Resume___Jaskirat_Gill___03_22_25.pdf"
                 target="_blank"
                 clickable
                 sx={{ width: isMobile ? "auto" : "20vw", color: "white" }}
