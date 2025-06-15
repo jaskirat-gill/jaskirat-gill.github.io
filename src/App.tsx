@@ -4,7 +4,9 @@ import { createTheme } from "@mui/material";
 import Hero from "./Containers/Hero/Hero";
 import Projects from "./Containers/ProjectGallery/Projects";
 import Contact from "./Containers/Contact/Contact";
+import Experience from "./Containers/Experience/Experience";
 import TopBar from "./Components/TopBar";
+
 function App() {
   const theme = createTheme({
     palette: {
@@ -39,14 +41,16 @@ function App() {
       fontSize: "2.4rem",
     },
   };
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <Hero />
         <TopBar />
         <Projects />
+        <Experience />
         <Contact />
-        <div >Made With TypeScript & React From Scratch</div>
+        <div>Made With TypeScript & React From Scratch</div>
       </ThemeProvider>
     </div>
   );

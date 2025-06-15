@@ -14,8 +14,8 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Email from "@mui/icons-material/Email";
 import { smoothScroll } from "../util";
 import { useMediaQuery } from "@mui/material";
-const pages = ["Home", "Projects", "Connect"];
 
+const pages = ["Home", "Projects", "Experience", "Connect"];
 
 function TopBar() {
   const isMobile = useMediaQuery("(max-width:600px)");
@@ -31,8 +31,17 @@ function TopBar() {
     setAnchorElNav(null);
   };
 
-  return (
+  const getScrollTarget = (page: string) => {
+    // Map page names to their corresponding scroll targets
+    switch (page.toLowerCase()) {
+      case "connect":
+        return "contact";
+      default:
+        return page.toLowerCase();
+    }
+  };
 
+  return (
     <AppBar position="sticky" color="secondary" sx={{opacity: isMobile ? '1' : '0.5', backdropFilter: 'blur(5px)'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{justifyContent:'space-between'}}>
@@ -51,6 +60,7 @@ function TopBar() {
               letterSpacing: ".3rem",
               color: "primary.main",
               textDecoration: "none",
+              cursor: "pointer",
             }}
           >
             JASKIRAT GILL
@@ -90,7 +100,7 @@ function TopBar() {
                   key={page}
                   onClick={() => {
                     handleCloseNavMenu();
-                    smoothScroll(page.toLowerCase());
+                    smoothScroll(getScrollTarget(page));
                   }}
                 >
                   <Typography textAlign="center" color="primary.main">
@@ -116,6 +126,7 @@ function TopBar() {
               letterSpacing: ".3rem",
               color: "primary.main",
               textDecoration: "none",
+              cursor: "pointer",
             }}
           >
             JASKIRAT GILL
@@ -150,7 +161,7 @@ function TopBar() {
                 key={page}
                 onClick={() => {
                   handleCloseNavMenu();
-                  smoothScroll(page.toLowerCase());
+                  smoothScroll(getScrollTarget(page));
                 }}
                 sx={{ my: 2, color: "primary.main", display: "block" }}
               >
@@ -163,4 +174,5 @@ function TopBar() {
     </AppBar>
   );
 }
+
 export default TopBar;

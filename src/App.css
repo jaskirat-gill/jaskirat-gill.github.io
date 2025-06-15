@@ -38,6 +38,7 @@
   display: flex;
   width: 100%;
   z-index: 999;
+  min-height: fit-content; /* Changed from fixed height */
 }
 
 @media (max-width: 600px) {
@@ -48,6 +49,13 @@
 
 @media (min-width: 600px) {
   .container-root-projects {
-    height: 105vh;
+    min-height: 105vh; /* Changed from fixed height */
+  }
+}
+
+/* Add responsive grid support */
+@media (min-width: 1200px) {
+  .container-root-projects {
+    min-height: 120vh; /* Accommodate 3-column layout */
   }
 }
