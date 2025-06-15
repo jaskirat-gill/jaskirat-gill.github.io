@@ -8,7 +8,6 @@ export interface Media {
   alt: string;
 }
 
-
 export interface ProjectData {
   id: number;
   mediaList: Media[];
@@ -23,6 +22,84 @@ export interface ProjectData {
 export const ProjectsData: ProjectData[] = [
   {
     id: 1,
+    mediaList: [
+      {
+        url: "https://i.imgur.com/9WiDKTz.png",
+        alt: "Landing Page for Bella Artistry",
+      },
+      {
+        url: "https://i.imgur.com/HHfpvhs.png",
+        alt: "Booking Page for Bella Artistry",
+      },
+      {
+        url: "https://i.imgur.com/AzH6uyO.png",
+        alt: "Contact Page for Bella Artistry",
+      },
+      {
+        url: "https://i.imgur.com/HHfpvhs.png",
+        alt: "Portfolio Page for Bella Artistry",
+      },
+    ],
+    links: [
+      {
+        displayText: "Live Website",
+        url: "https://bellaartistry.ca",
+      },
+      {
+        displayText: "GitHub Repository",
+        url: "https://github.com/jaskirat-gill/bella-artistry",
+      },
+    ],
+    title: "Bella Artistry",
+    skills: ["React", "TypeScript", "Wordpress"],
+    previewText:
+      "Booking and portfolio website for a local makeup artist with 20,000+ social media followers",
+    content:
+      "Professional booking and portfolio website developed for Bella Artistry, a local makeup artist with over 20,000 social media followers. The website features a modern, responsive design showcasing the artist's portfolio with high-quality image galleries, client testimonials, and an integrated booking system. Built using React and TypeScript for optimal performance and maintainability, with WordPress as the content management system to allow easy updates to the portfolio and services. The site includes SEO optimization, fast loading times, and mobile-first design to reach clients across all devices.",
+    previewImage: {
+      url: "https://i.imgur.com/9WiDKTz.png",
+      alt: "Landing Page for Bella Artistry",
+    },
+  },
+  {
+    id: 2,
+    mediaList: [
+      {
+        url: "https://i.imgur.com/Ur36Rn8.png",
+        alt: "Landing Page for German Werks",
+      },
+      {
+        url: "https://i.imgur.com/UmY5y30.png",
+        alt: "Product List for German Werks",
+      },
+      {
+        url: "https://i.imgur.com/NgM0XN2.png",
+        alt: "Product Page for German Werks",
+      },
+    ],
+    links: [
+      {
+        displayText: "Live Website",
+        url: "https://germanwerks.ca/",
+      },
+      {
+        displayText: "GitHub Repository",
+        url: "https://github.com/jaskirat-gill/German-Werks",
+      },
+    ],
+    title: "German Werks",
+    skills: ["React", "TypeScript", "MedusaJS", "Stripe"],
+    previewText:
+      "Ecommerce website for a local auto parts store. Built with MedusaJS and Stripe",
+    content:
+      "Full-stack ecommerce website developed for German Werks, a local automotive parts store. Built using React and TypeScript for the frontend with MedusaJS as the ecommerce backend framework, providing a robust and scalable solution for online sales. Integrated with Stripe for secure payment processing, allowing customers to browse inventory, manage shopping carts, and complete purchases seamlessly. The website features product catalog management, inventory tracking, order processing, and customer account functionality. Designed with a focus on user experience and mobile responsiveness to serve automotive enthusiasts and professionals.",
+    previewImage: {
+      url: "https://i.imgur.com/Ur36Rn8.png",
+        alt: "Landing Page for German Werks",
+    },
+  },
+  {
+    id: 3,
     mediaList: [
       {
         url: "https://i.imgur.com/LYXJpbO.png",
@@ -49,7 +126,7 @@ export const ProjectsData: ProjectData[] = [
     ],
     title: "UBC Workday Chrome Extension",
     skills: ["React", "TypeScript", "DynamoDB"],
-    previewText: 
+    previewText:
       "Chrome extension developed with small team to combat Workday's poor UI/UX. 5000+ active users",
     content:
       "Chrome extension & Website developed with small team to combat Workday's poor UI/UX. Extremely well recieved by student body with an active Discord Community and over 5000 users. Open source project maintained by a small group of developers. Extension built on React, TypeScript & CSS. CI/CD pipeline set up with GitHub Actions. The extension allows students to view their course schedule in a more user-friendly format.",
@@ -59,7 +136,7 @@ export const ProjectsData: ProjectData[] = [
     },
   },
   {
-    id: 2,
+    id: 4,
     mediaList: [
       {
         url: "https://i.imgur.com/JDyfSYY.png",
@@ -78,7 +155,7 @@ export const ProjectsData: ProjectData[] = [
       {
         displayText: "Student Hub Website",
         url: "https://ubcstudenthub.ca",
-      }
+      },
     ],
     title: "UBC Student Hub",
     skills: ["React", "TypeScript", "DynamoDB", "Node.js"],
@@ -92,7 +169,7 @@ export const ProjectsData: ProjectData[] = [
     },
   },
   {
-    id: 3,
+    id: 5,
     mediaList: [
       {
         url: "https://i.imgur.com/Gdv7Aa3.png",
@@ -129,7 +206,7 @@ export const ProjectsData: ProjectData[] = [
     },
   },
   {
-    id: 4,
+    id: 6,
     mediaList: [
       {
         url: "",
@@ -150,9 +227,9 @@ export const ProjectsData: ProjectData[] = [
         url: "https://github.com/jaskirat-gill/poppy-streets",
       },
     ],
-    title: "Poppy Streets Freelance Project",   
+    title: "Poppy Streets Freelance Project",
     skills: ["Python", "MySQL", "JavaScript"],
-    previewText: 
+    previewText:
       "Web App designed to honor the stories of Canadian Veterans",
     content:
       "Freelance project on the request of a member of the military. Richmond BC has a program where some street signs are named after veterans commemorating their service with a poppy on the sign. The website was built to share the stories of these veterans by showing these signs on a map and displaying biographies of who that sign is for. The website was built using Python, MySQL, and JavaScript. Unfortunately, no pictures are available",
